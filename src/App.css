@@ -1,0 +1,154 @@
+.context-menu {
+  display: flex;
+  flex-direction: column;
+  width: 55px;
+  position: absolute;
+}
+
+.context-menu button {
+  background-color: white;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.592);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+.context-menu button:hover {
+  cursor: pointer;
+  background-color: rgb(232, 235, 238);
+}
+
+.expenseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.expenseForm form {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.expenseForm form button {
+  padding: 8px 10px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 17px;
+  color: white;
+  background-color: rgba(81, 81, 250, 0.962);
+}
+
+.expenseForm form input {
+  padding: 7px 10px;
+  font-size: 17px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+
+}
+
+.expenseForm form div {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 5px;
+}
+
+.error {
+  color: red;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.expenseForm>div {
+  display: flex;
+  gap: 50px;
+}
+
+#select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+  font-size: 16px;
+
+}
+
+.amount-column {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+} 
+
+.amount-column button{
+  border: 1px solid rgba(0, 0, 0, 0.288);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.amount-column svg {
+  width: 12px;
+}
+
+.expenseTable {
+  max-width: 80vw;
+  border-radius: 5px;
+}
+
+.expenseTable th,
+.expenseTable td {
+  border: 1px solid rgba(0, 0, 0, 0.219);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin: 30px 100px;
+}
+
+@media only screen and (max-width:1150px) {
+  .expenseForm>div {
+    flex-direction: column;
+  }
+
+  .expenseForm form div {
+    width: 80vw;
+  }
+
+  .expenseTable tbody td {
+    width: 62vw;
+  }
+
+  .flex {
+    margin: 30px 20px;
+  }
+}
+
+@media only screen and (max-width:750px) {
+  .expenseForm form div {
+    width: 90vw;
+  }
+
+  .expenseTable {
+    max-width: 90vw;
+  }
+}
+
+@media only screen and (max-width:400px) {
+  .expenseForm h1 {
+    font-size: 1.7em;
+  }
+}
+
+@media only screen and (max-width:350px) {
+  .expenseForm h1 {
+    font-size: 1.5em;
+  }
+}
