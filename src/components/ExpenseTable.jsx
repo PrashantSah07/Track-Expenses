@@ -110,6 +110,17 @@ const ExpenseTable = ({ expenses, setExpenses, setData, setIsEdit }) => {
                             }} className='clear-sort'>Clear Sort</td>
                             <td style={{ color: 'green' }}><strong>₹{totalAmount}/-</strong></td>
                         </tr>
+                        <tr>
+                            {expenses.length > 0 && <td colSpan={3} style={{ textAlign: 'center', color: 'red', fontWeight: 'bold', cursor: 'pointer' }} onClick={function () {
+                                if (expenses.length > 0) {
+                                    let conf = confirm('it will erase all the data?');
+                                    if (conf) {
+                                        setExpenses([]);
+                                        localStorage.setItem('expenses', JSON.stringify([]));
+                                    }
+                                }
+                            }}>Erase All Data</td>}
+                        </tr>
                     </tbody>
                 </table>
 
