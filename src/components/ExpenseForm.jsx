@@ -59,7 +59,7 @@ const ExpenseForm = ({ setExpenses, expenses }) => {
         }
 
         setExpenses((prevExpenses) => {
-            const updatedExpenses = [...prevExpenses, data];
+            const updatedExpenses = [data, ...prevExpenses];
             localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
             return updatedExpenses;
         });
@@ -87,6 +87,7 @@ const ExpenseForm = ({ setExpenses, expenses }) => {
                             <label style={{ fontWeight: 'bold' }} htmlFor="category">Category</label>
                             <select id='select' name='category' value={data.category} onChange={handleChange} >
                                 <option value="" hidden>Select Category</option>
+                                <option value="Others">Others</option>
                                 <option value="Grocery">Grocery</option>
                                 <option value="Clothes">Clothes</option>
                                 <option value="Bills">Bills</option>

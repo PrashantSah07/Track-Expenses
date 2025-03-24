@@ -32,10 +32,31 @@ const ExpenseTable = ({ expenses, setExpenses, setData, setIsEdit }) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>
+                                <div className='compare-column'>
+                                    <span>Title</span>
+                                    <div style={{ display: 'flex', gap: '2px' }}>
+                                        <button onClick={function () {
+                                            const sortedExpenses = [...filterCategory].sort((a, b) => a.title.localeCompare(b.title));
+                                            setFilterCategory(sortedExpenses);
+                                            // localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
+                                        }} title="Sort Ascending">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.0001 22.0003L11.0002 22.0004L11.0002 5.82845L7.05044 9.77817L5.63623 8.36396L12.0002 2L18.3642 8.36396L16.9499 9.77817L13.0002 5.8284L13.0001 22.0003Z"></path></svg>
+                                        </button>
+                                        <button onClick={function () {
+                                            const sortedExpenses = [...filterCategory].sort((a, b) => b.title.localeCompare(a.title));
+                                            setFilterCategory(sortedExpenses);
+                                            // localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
+                                        }} title="Sort Descending">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.0001 1.99974L11.0002 1.9996L11.0002 18.1715L7.05044 14.2218L5.63623 15.636L12.0002 22L18.3642 15.636L16.9499 14.2218L13.0002 18.1716L13.0001 1.99974Z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </th>
                             <th>
                                 <select style={{ border: 'none', fontWeight: 'bold', fontSize: '16px' }} onChange={filter} >
                                     <option value="">All</option>
+                                    <option value="Others">Others</option>
                                     <option value="Grocery">Grocery</option>
                                     <option value="Clothes">Clothes</option>
                                     <option value="Bills">Bills</option>
@@ -47,20 +68,20 @@ const ExpenseTable = ({ expenses, setExpenses, setData, setIsEdit }) => {
                                 Date
                             </th> */}
                             <th>
-                                <div className='amount-column'>
+                                <div className='compare-column'>
                                     <span>Amount</span>
                                     <div style={{ display: 'flex', gap: '2px' }}>
                                         <button onClick={function () {
                                             const sortedExpenses = [...filterCategory].sort((a, b) => a.amount - b.amount);
                                             setFilterCategory(sortedExpenses);
-                                            localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
+                                            // localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
                                         }} title="Sort Ascending">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.0001 22.0003L11.0002 22.0004L11.0002 5.82845L7.05044 9.77817L5.63623 8.36396L12.0002 2L18.3642 8.36396L16.9499 9.77817L13.0002 5.8284L13.0001 22.0003Z"></path></svg>
                                         </button>
                                         <button onClick={function () {
                                             const sortedExpenses = [...filterCategory].sort((a, b) => b.amount - a.amount);
                                             setFilterCategory(sortedExpenses);
-                                            localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
+                                            // localStorage.setItem('expenses', JSON.stringify(sortedExpenses));
                                         }} title="Sort Descending">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.0001 1.99974L11.0002 1.9996L11.0002 18.1715L7.05044 14.2218L5.63623 15.636L12.0002 22L18.3642 15.636L16.9499 14.2218L13.0002 18.1716L13.0001 1.99974Z"></path></svg>
                                         </button>
@@ -84,8 +105,9 @@ const ExpenseTable = ({ expenses, setExpenses, setData, setIsEdit }) => {
                         })}
                         <tr>
                             <td style={{ color: 'green', fontWeight: 'bold' }}>Total</td>
-                            {/* <td colSpan={2}></td> */}
-                            <td></td>
+                            <td onClick={function () {
+                                setFilterCategory(expenses);
+                            }} className='clear-sort'>Clear Sort</td>
                             <td style={{ color: 'green' }}><strong>₹{totalAmount}/-</strong></td>
                         </tr>
                     </tbody>
